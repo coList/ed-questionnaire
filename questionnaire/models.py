@@ -1,5 +1,4 @@
 from django.db import models
-from transmeta import TransMeta
 from django.utils.translation import ugettext_lazy as _
 from questionnaire import QuestionChoices
 import re
@@ -91,7 +90,6 @@ class Questionnaire(models.Model):
 
 
 class QuestionSet(models.Model):
-    __metaclass__ = TransMeta
 
     "Which questions to display on a question page"
     questionnaire = models.ForeignKey(Questionnaire)
@@ -267,7 +265,6 @@ class RunInfoHistory(models.Model):
 
 
 class Question(models.Model):
-    __metaclass__ = TransMeta
 
     questionset = models.ForeignKey(QuestionSet)
     number = models.CharField(max_length=8, help_text=
@@ -379,7 +376,6 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
-    __metaclass__ = TransMeta
 
     question = models.ForeignKey(Question)
     sortid = models.IntegerField()
